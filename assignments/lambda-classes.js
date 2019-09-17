@@ -62,6 +62,17 @@ class Instructor extends Person {
     grade(subject) {
         return `${this.name} receives a perfect score on ${subject}`;
     }
+    //********/
+    numberGrade(student){
+    //   return student.grade + ((Math.random()*100));
+    // }
+    if(student.grade <70){
+      return student.grade += (Math.floor(Math.random()*10));
+    }
+    else{
+      return student.grade -= (Math.floor(Math.random()*10));
+    }
+  }
 };
 
 // #### Student
@@ -83,6 +94,7 @@ class Student extends Person {
             this.previousBackground = props.previousBackground;
             this.className = props.className;
             this.favSubjects = props.favSubjects;
+            this.grade = props.grade;
     }
     listSubjects() {
         return `${this.favSubjects}`;
@@ -90,6 +102,13 @@ class Student extends Person {
     PRAssignment(subject) {
         console.log (`${this.name} has submitted a PR for ${subject}`)//this is the one that is different than the "grade" and ones above
     }
+    graduate() {
+      if (this.grade > 70 ) {
+        return `Congratulations, ${this.name} is ready to graduate!!!`;
+    } else {
+      return `Oh well, back to studying...`;
+    }
+  }
 };
 
 // #### Project Manager
@@ -115,6 +134,7 @@ class ProjectManager extends Instructor {
     debugsCode(student, subject) {
         console.log(`${this.name} debugs ${student.name}'s code on ${subject}.`)
     }
+
 };
 
 
@@ -172,6 +192,7 @@ const Edward = new Student({
     previousBackground: 'Depression',
     className: 'SoulPainting',
     favSubjects: 'Impressionism, CS5, JS',
+    grade: 80,
   });
 
   const Dua = new Student({
@@ -181,6 +202,7 @@ const Edward = new Student({
     previousBackground: 'Singing',
     className: 'FamousSingers',
     favSubjects: 'Singing, HTML',
+    grade: 85,
   });
 
 //-Project Manager
@@ -221,13 +243,13 @@ console.log(Marie.grade('Chemistry'));
 //Student tests:
 console.log(Edward.listSubjects());
 console.log(Dua.listSubjects());
-console.log(Edward.PRAssignment('Sprint3'));
-console.log(Dua.PRAssignment('JSAssessment'));
+  console.log(Edward.PRAssignment('Sprint3'));
+  console.log(Dua.PRAssignment('JSAssessment'));
 //Project Manager tests:
-console.log(Alice.standup('WEBEU3'));
-console.log(Darude.standup('PB5'));
-console.log(Alice.debugsCode(Dua, 'HTML'));
-console.log(Darude.debugsCode(Edward, 'CSS'));
+  console.log(Alice.standup('WEBEU3'));
+  console.log(Darude.standup('PB5'));
+  console.log(Alice.debugsCode(Dua, 'HTML'));
+  console.log(Darude.debugsCode(Edward, 'CSS'));
 
 
 
@@ -238,3 +260,12 @@ console.log(Darude.debugsCode(Edward, 'CSS'));
 // * Add a graduate method to a student.
 //   * This method, when called, will check the grade of the student and see if they're ready to graduate from Lambda School
 //   * If the student's grade is above a 70% let them graduate! Otherwise go back to grading their assignments to increase their score.
+
+//grade prop
+  //(done)
+// Instructor numberGrade method:
+console.log(Antoni.numberGrade(Dua));
+console.log(Antoni.numberGrade(Edward));
+//Graduate method:
+console.log(Dua.graduate());
+console.log(Edward.graduate());
