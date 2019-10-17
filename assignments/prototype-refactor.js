@@ -151,7 +151,8 @@ class Airplane {
     console.log(benz.drive(200));
     console.log(benz.drive(40));
     console.log(benz.tank);
-    console.log(benz)
+    console.log(benz);
+    console.log(benz.drive(50));
   
  
   
@@ -163,46 +164,59 @@ class Airplane {
 //   //     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
 //   //         + Should return a string "Playing with x", x being the favorite toy.
 //   // */
-//   function Baby() {
-//     // Inherit parent attributes
-//     Person.call(this, attrs);
-//     this.favoriteToy = attrs.favoriteToy;
-//   }
-//   // Inherit parent prototypes
-//   Baby.prototype = Object.create(Person.prototype);
-//   Baby.prototype.play = function(favoriteToy) {
-//     console.log(`Playing with ${favoriteToy}`);
-//   };
-  
-//   // /*
-//   //   TASK 4
-  
-//   //   In your own words explain the four principles for the "this" keyword below:
-//   //   1. Window/Global/Default Object Binding: When in the global scope, the value of "this" will be the window/console Object;
-//   //   2. Implicit Binding: Whenever a function is called by a preceding dot, the object before that dot is this.
-//   //   3. New Binding: Whenever a constructor function is used, "this" refers to the specific instance of the object that is created and retured by the constructor function.
-//   //   4. Explicit Binding: Whenever Javascript's call or apply method is used this is explicityly defined.
-//   // */
-  
-//   // ///////// END OF CHALLENGE /////////
-//   // ///////// END OF CHALLENGE /////////
-//   // ///////// END OF CHALLENGE /////////
-//   if (typeof exports !== "undefined") {
-//     module.exports = module.exports || {};
-//     if (Airplane) {
-//       module.exports.Airplane = Airplane;
-//     }
-//     if (Person) {
-//       module.exports.Person = Person;
-//     }
-//     if (Car) {
-//       module.exports.Car = Car;
-//     }
-//     if (Baby) {
-//       module.exports.Baby = Baby;
-//     }
-//   }
-  
-// // 2. Your goal is to refactor all of this code to use ES6 Classes. The console.log() statements should still return what is expected of them.
 
-// // */
+    class Baby extends Person {
+        constructor(name, age, favoriteToy){
+            super(name, age); //Person.call(this, name);
+            //this.name = name;
+            this.favoriteToy = favoriteToy;
+        }
+        play(favoriteToy){
+            return `${this.name} is playing with ${favoriteToy}`;
+        }
+    };
+
+    const Stewie = new Baby ({
+        name: 'Stewie',
+        age: '1',
+    })
+
+    console.log(Stewie.play('a rattle.'));
+    console.log(Stewie.age);
+
+   
+
+  /*
+    TASK 4
+    
+  
+    In your own words explain the four principles for the "this" keyword below:
+    1. Window/Global/Default Object Binding: When in the global scope, the value of "this" will be the window/console Object;
+    2. Implicit Binding: Whenever a function is called by a preceding dot, the object before that dot is this.
+    3. New Binding: Whenever a constructor function is used, "this" refers to the specific instance of the object that is created and retured by the constructor function.
+    4. Explicit Binding: Whenever Javascript's call or apply method is used this is explicityly defined.
+
+    // // */
+  
+  ///////// END OF CHALLENGE /////////
+  ///////// END OF CHALLENGE /////////
+  ///////// END OF CHALLENGE /////////
+  if (typeof exports !== "undefined") {
+    module.exports = module.exports || {};
+    if (Airplane) {
+      module.exports.Airplane = Airplane;
+    }
+    if (Person) {
+      module.exports.Person = Person;
+    }
+    if (Car) {
+      module.exports.Car = Car;
+    }
+    if (Baby) {
+      module.exports.Baby = Baby;
+    }
+  }
+  
+// 2. Your goal is to refactor all of this code to use ES6 Classes. The console.log() statements should still return what is expected of them.
+
+
