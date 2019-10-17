@@ -78,7 +78,7 @@ class Airplane {
         }
     };
 
-    // Test Person
+    // Test Person:
       const poopingCharacter = new Person({
         name: 'Bezelbub',
         age: '750',
@@ -101,33 +101,6 @@ class Airplane {
       console.log(poopingCharacter.poop());
       console.log(poopingCharacter.toString());
   
-// //   console.log(poopingCharacter.eat("edible", "arrangement"));
-
-
-//   Person.prototype.eat = function(someFood) {
-//     if (this.stomach.length < 10) {
-//       this.stomach.push(someFood);
-//       console.log(
-//         `The stomach just consumed 1 unit of food and ${10 -
-//           this.stomach.length} units remain.`
-//       );
-//     } else {
-//       return `The stomach is full.`;
-//     }
-//   };
-  
-//   Person.prototype.poop = function() {
-//     this.stomach = [];
-//     console.log(`This person just pooped and has 10 stomach units available.`);
-//   };
-  
-//   Person.prototype.toString = function() {
-//     return `${this.name}, ${this.age}`;
-//   };
-  
-// //   const poopingCharacter = new Person(Bezelbub, 750);
-  
-// //   console.log(poopingCharacter.eat("edible", "arrangement"));
   
 //   /*
 //     TASK 2
@@ -143,30 +116,45 @@ class Airplane {
 //           + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 //   */
   
-//   function Car(model, milesPerGallon) {
-//     this.model = model;
-//     this.milesPerGallon = milesPerGallon;
-//     this.tank = 0;
-//     this.odometer = 0;
-//   }
+    class Car {
+        constructor(attributes) {
+         this.model = attributes.model;
+         this.milesPerGallon = attributes.milesPerGallon;
+         this.tank = 0;
+         this.odometer = 0;
+        }
+        fill(gallons) {
+         this.tank += gallons;
+         console.log(`This car's tank was just filled with ${gallons} more gallons.`);
+        }
+        drive(distance) {
+         let maxDistance = this.tank * this.milesPerGallon;
+         if (distance > maxDistance) {
+            this.odometer += maxDistance;
+            this.tank = 0;
+            console.log(`This car just drove ${maxDistance} miles and ran out of gas.`);
+         } else {
+            this.odometer += distance;
+            this.tank -= distance / this.milesPerGallon;
+            console.log(`I just traveled ${distance} miles!`);
+         }
+        }
+    };
+
+    // Test Person:
+    const benz = new Car({
+     model: 'AMG',
+     milesPerGallon: '14',
+    });
+
+    console.log(benz.fill(20));
+    console.log(benz.drive(200));
+    console.log(benz.drive(40));
+    console.log(benz.tank);
+    console.log(benz)
   
-//   Car.prototype.fill = function(gallons) {
-//     this.tank += gallons;
-//     console.log(`This car's tank was just filled with ${gallons} more gallons.`);
-//   };
+ 
   
-//   Car.prototype.drive = function(distance) {
-//     let maxDistance = this.tank * this.milesPerGallon;
-//     if (distance > maxDistance) {
-//       this.odometer += maxDistance;
-//       this.tank = 0;
-//       console.log(`This car just drove ${maxDistance} miles and ran out of gas.`);
-//     } else {
-//       this.odometer += distance;
-//       this.tank -= distance / this.milesPerGallon;
-//       console.log(`I just traveled ${distance} miles!"`);
-//     }
-//   };
   
 //   // /*
 //   //   TASK 3
